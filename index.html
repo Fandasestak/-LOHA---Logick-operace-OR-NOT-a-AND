@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Množinové operace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Množinové operace</h2>
+    <p>Množiny:</p>
+    <p>A = {1, 2, 3, 4, 5}</p>
+    <p>B = {4, 5, 6, 7, 8}</p>
+    <p>C = {3, 4, 5}</p>
+
+    <p id="intersection"></p>
+    <p id="union"></p>
+    <p id="complement"></p>
+</div>
+
+<script>
+    // Definice množin
+    const A = new Set([1, 2, 3, 4, 5]);
+    const B = new Set([4, 5, 6, 7, 8]);
+    const C = new Set([3, 4, 5]);
+
+    // a) Průnik množiny A a množiny C
+    const intersection = new Set([...A].filter(x => C.has(x)));
+    document.getElementById('intersection').innerText = `Průnik A ∩ C: {${[...intersection].join(', ')}}`;
+
+    // b) Sjednocení množiny A a množiny B
+    const union = new Set([...A, ...B]);
+    document.getElementById('union').innerText = `Sjednocení A ∪ B: {${[...union].join(', ')}}`;
+
+    // c) Doplněk množiny A vzhledem k množině B
+    const complement = new Set([...B].filter(x => !A.has(x)));
+    document.getElementById('complement').innerText = `Doplněk A vzhledem k B: {${[...complement].join(', ')}}`;
+</script>
+
+</body>
+</html>
